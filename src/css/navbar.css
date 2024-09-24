@@ -1,0 +1,179 @@
+/* Navbar general */
+.navbar {
+    width: 100%;
+    max-width: 1299px;
+    height: 68px;
+    margin: 16px auto; /* Centrar horizontalmente */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* Fondo transparente */
+    padding: 0 20px;
+}
+
+/* Logo y texto Meraki */
+.logo-brand {
+    display: flex;
+    align-items: center;
+    margin-right: auto; /* Asegura que el menú se centre */
+    text-decoration: none !important; /* Elimina el subrayado */
+}
+
+.logo {
+    width: 59px;
+    height: 59px;
+    margin: 0; /* Eliminar margen */
+}
+
+.logo img {
+    width: 100%; /* Se ajusta al contenedor */
+    height: auto; /* Mantiene la proporción */
+    max-width: 59px; /* Asegúrate de que no sea más grande que el contenedor */
+}
+
+.brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    margin-left: 4px; /* Agregar un margen pequeño para separación */
+    text-decoration: none !important; /* Elimina el subrayado */
+    display: inline; /* Asegura que no se aplique el subrayado */
+}
+
+/* Menú centrado con un ancho fijo */
+.menu {
+    width: 499px; /* Ancho fijo del menú */
+    height: 68px; /* Altura del menú */
+    display: flex;
+    justify-content: center; /* Centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    background: rgba(255, 255, 255, 0.6); /* Fondo con opacidad */
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Borde blanco con opacidad */
+    border-radius: 20px; /* Bordes redondeados */
+    margin: 0 auto; /* Centrar el menú dentro del navbar */
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around; /* Espacio entre elementos para centrar */
+    width: 100%; /* Asegura que el ul ocupe todo el ancho del menú */
+    padding: 0; /* Eliminar padding por defecto */
+    margin: 0; /* Eliminar margen por defecto */
+}
+
+.menu-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 530;
+    line-height: 24px;
+    color: #8987A1;
+    cursor: pointer;
+    background-color: transparent;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efectos de hover y click */
+.menu-item:hover,
+.menu-item:active {
+    background-color: #25243200;
+    color: #252432; /* Cambia a blanco en hover */
+    font-weight: bold; /* Negrita en hover/click */
+}
+
+/* Clase para resaltar la opción activa */
+.menu-item.active {
+    font-weight: bold; /* Negrita para la opción activa */
+    color: #252432; /* Color para la opción activa */
+}
+
+/* Botones a la derecha */
+.navbar-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center; /* Asegura que ambos botones estén alineados verticalmente */
+}
+
+/* Botones */
+.register-btn {
+    width: 84px;
+    height: 40px; /* Aumenté la altura para que esté alineado con el otro botón */
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #8987a100;
+    color: #8987A1;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-btn:hover {
+    font-weight: bold;
+    color: #252432;
+}
+
+.login-btn {
+    width: 110px;
+    height: 40px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #4E47FF;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #3730A3;
+}
+
+/* Estilos para enlaces */
+.link,
+.menu-item a,
+.logo-brand a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: inherit; /* Hereda el color del elemento padre */
+}
+
+/* Elimina el subrayado de los enlaces en el botón de registrarse */
+.register-btn {
+    color: #8987A1; /* Color de texto específico para el botón */
+}
+
+/* Asegúrate de que los botones tengan el estilo deseado */
+.navbar-buttons a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces del navbar */
+}
+
+/* Sidebar del carrito */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Oculto por defecto */
+    width: 300px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+}
+
+.cart-sidebar.open {
+    right: 0; /* Mostrar cuando está abierto */
+}
+
+/* Otros estilos para el carrito y la navbar */
+
+

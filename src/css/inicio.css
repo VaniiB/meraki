@@ -1,0 +1,104 @@
+/* Inicio.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Para evitar el scroll horizontal */
+}
+
+
+
+
+  .inicio {
+    background-image: url('src/resources/Mask group.png');
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* Evitar que se repita la imagen */
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  /* Hero Section */
+  .hero {
+   
+    color: rgba(255, 255, 255, 0);
+    padding: 100px 0;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .hero .vision {
+    color: #f72585;
+  }
+  
+  .hero button {
+    background-color: #5e60ce;
+    border: none;
+  }
+  
+  /* Servicios Section */
+  .servicios .card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .servicios .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5e60ce;
+  }
+  
+  /* Trabajos Section */
+  .trabajos img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Precios Section */
+  .precios .card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .precios .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5e60ce;
+  }
+  
+  /* FAQ Section */
+  .faq .accordion-button {
+    background-color: #5e60ce;
+    color: white;
+  }
+  
+  .faq .accordion-body {
+    background-color: #f8f9fa;
+  }
+  
+  /* Contacto Section */
+  .contacto form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .contacto form .form-control {
+    border-radius: 8px;
+  }
+  
+  .contacto button {
+    background-color: #5e60ce;
+    border: none;
+    width: 100%;
+  }
+  
