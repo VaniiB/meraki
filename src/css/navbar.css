@@ -159,21 +159,446 @@
 }
 
 /* Sidebar del carrito */
+/* Estilos para el sidebar del carrito de compras */
 .cart-sidebar {
     position: fixed;
+    right: 0;
     top: 0;
-    right: -300px; /* Oculto por defecto */
-    width: 300px;
-    height: 100%;
-    background: white;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: right 0.3s ease;
+    width: 400px; /* Ajusta el ancho del sidebar según sea necesario */
+    height: 99%; /* Largo del sidebar hasta el final de la pantalla */
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: -20px 0 15px rgba(150, 150, 150, 0.068); /* Sombra para el efecto de profundidad */
+    transform: translateX(100%); /* Ocultar el sidebar por defecto */
+    transition: transform 0.3s ease; /* Animación de deslizamiento */
+    z-index: 1000; /* Asegúrate de que el sidebar esté por encima de otros elementos */
+    border-radius: 20px;
+  }
+  
+  .cart-sidebar.open {
+    transform: translateX(0); /* Mostrar el sidebar cuando está abierto */
+  }
+  
+  /* Estilo para la "X" de cerrar */
+  .close-btn {
+    background: none; /* Sin fondo */
+    color: #000; /* Color de la "X" */
+    border: none; /* Sin borde */
+    font-size: 24px; /* Tamaño de la "X" */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    position: absolute; /* Posición absoluta para colocar la "X" en la esquina */
+    top: 15px; /* Ajusta la posición vertical */
+    right: 15px; /* Ajusta la posición horizontal */
+  }
+  
+  /* Estilo del botón de comprar */
+  .cart-sidebar button {
+    background-color: #ececec; /* Color de fondo del botón */
+    color: #272727; /* Color del texto blanco */
+    border: #FFFFFF; /* Sin borde */
+    padding: 20px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    width: 80%; /* Botón ocupa todo el ancho del sidebar */
+    margin-top: auto; /* Mueve el botón al fondo del sidebar */
+    transition: all 0.3s; /* Transición suave para el hover */
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    font-weight: 600; /* Negrita */
+    
+    margin-left: 40px;
+  }
+  
+  .cart-sidebar button:hover {
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); /* Sombra sutil al pasar el mouse */
+    background-color: #5B54FF; /* Color de fondo más oscuro al pasar el mouse */
+    color: #FFFFFF;
+  }
+  
+  /* Estilo para el contenido del carrito */
+  .cart-sidebar p {
+    font-size: 20px; /* Tamaño de fuente grande */
+    text-align: center; /* Centrar el texto */
+    margin-top: 60px; /* Espaciado superior */
+    color: rgba(0, 0, 0, 0.5); /* Color gris claro como marca de agua */
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    font-weight: normal; /* Peso normal */
+
+  }
+  
+  .cart-sidebar ul {
+    list-style-type: none; /* Sin viñetas */
+    padding: 0; /* Sin espaciado */
+    margin: 0; /* Sin márgenes */
+  }
+  
+  .cart-sidebar li {
+    padding: 10px; /* Espaciado interno para cada elemento de la lista */
+    border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre elementos */
+  }
+  
+
+/* Botón de menú */
+.menu-btn {
+    width: 152px;
+    height: 63px;
+    border-radius: 10px 0 0 0;
+    border: 1px solid #FFFFFF;
+    background: rgba(255, 255, 255, 0.6);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #252432;
+    line-height: 24px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+  
 }
 
-.cart-sidebar.open {
-    right: 0; /* Mostrar cuando está abierto */
+.menu-btn:hover,
+.menu-btn:active {
+    background-color: #5B54FF;
+    border: 1px solid #5B54FF;
+    color: #FFFFFF;
 }
 
-/* Otros estilos para el carrito y la navbar */
+/* Dropdown del menú */
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    width: 152px;
+    height: auto;
+    border-radius: 15px 0 0 0;
+    background: transparent;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
+    
+   
+}
+
+.menu-dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+   
+    
+    
+
+}
+
+.menu-dropdown li {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    
+}
+
+.menu-dropdown li:hover {
+    background-color: #5B54FF;
+    color: #FFFFFF;
+}
+
+.menu-dropdown li a {
+    text-decoration: none;
+    color: #252432;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.menu-dropdown li:hover a {
+    color: #FFFFFF;
+}
+
+/* Mostrar/ocultar dropdown al hacer clic */
+.menu-btn.open + .menu-dropdown {
+    display: block;
+}
+
+/* Animación para el dropdown */
+.menu-dropdown {
+    opacity: 0;
+    transform: scaleY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-dropdown.open {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* Versión Mobile */
+.mobile-navbar {
+  background-color: transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+.mobile-icons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #4E47FF;
+}
+
+.mobile-menu-btn {
+    background-color: #ffffffad;
+    border: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px;
+    width: 120px;
+    margin-left: -25px;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
 
 
+
+
+
+.mobile-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.mobile-logo img {
+    width: 100px; /* Ajustá el tamaño según el diseño */
+}
+
+.mobile-menu-dropdown {
+    position: absolute;
+    top: 100px; /* Ajustar según el diseño */
+    left: 160px;
+    right: 0;
+    background-color: #ffffff00;
+    font-family: 'Inter', sans-serif;
+    z-index: 1000;
+    width: 120px;
+    height: auto;
+}
+
+.mobile-menu-dropdown a {
+    color: inherit; /* Mantiene el color del texto del contenedor */
+    text-decoration: none; /* Elimina el subrayado */
+    display: block; /* Asegura que el enlace ocupe todo el espacio disponible */
+    padding: 6px 0 0 0 0; /* Ajusta el padding según sea necesario */
+
+}
+
+.mobile-menu-dropdown a:hover {
+    background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse, si deseas */
+    color: inherit; /* Mantiene el color del texto al hacer hover */
+    
+}
+
+.mobile-menu-dropdown ul {
+    list-style: none;
+    padding: 0;
+    background-color: #faf6f6de;
+    border-radius: 10px;
+
+    
+}
+
+.mobile-menu-dropdown li {
+    padding: 1rem;
+    border-bottom: 1px solid #ffffff;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+.mobile-navbar {
+    display:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Mostrar menú mobile solo en pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+
+    .mobile-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .mobile-logo img {
+        width: 100px; /* Ajustá el tamaño según el diseño */
+    }
+
+    .mobile-menu-dropdown {
+        position: absolute;
+        top: 100px; /* Ajustar según el diseño */
+        left: 160px;
+        right: 0;
+        background-color: #ffffff00;
+        font-family: 'Inter', sans-serif;
+        z-index: 1000;
+        width: 120px;
+        height: auto;
+        text-align:center ;
+    }
+
+    .mobile-menu-dropdown a {
+        color: inherit; /* Mantiene el color del texto del contenedor */
+        text-decoration: none; /* Elimina el subrayado */
+        display: block; /* Asegura que el enlace ocupe todo el espacio disponible */
+        padding: 6px 0 0 0 0; /* Ajusta el padding según sea necesario */
+    
+    }
+    
+    .mobile-menu-dropdown a:hover {
+        background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse, si deseas */
+        color: inherit; /* Mantiene el color del texto al hacer hover */
+        
+    }
+
+    .mobile-menu-dropdown ul {
+        list-style: none;
+        padding: 0;
+        background-color: #faf6f6de;
+        border-radius: 10px;
+    
+        
+    }
+
+    .mobile-menu-dropdown li {
+        padding: 1rem;
+        border-bottom: 1px solid #ffffff;
+        border-radius: 10px;
+        font-weight: 500;
+    }
+
+    .mobile-menu-dropdown li:hover {
+        background-color: #5B54FF;
+        color: #FFFFFF;
+        border-radius: 10px;
+    
+    }
+
+    .mobile-menu-btn:active {
+        background-color: #5B54FF; /* Color de fondo al hacer clic */
+        color: #ffffff; /* Color de texto al hacer clic */
+    }
+    
+    /* Opcional: clase para estado activo */
+    .active {
+        background-color: #5B54FF; /* Color de fondo cuando se activa */
+        color: #ffffff; /* Color de texto cuando se activa */
+    }
+
+    
+    /* Sidebar del carrito */
+/* Estilos para el sidebar del carrito de compras */
+.cart-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%; /* Ajusta el ancho del sidebar según sea necesario */
+    height: 100%; /* Largo del sidebar hasta el final de la pantalla */
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: -20px 0 15px rgba(150, 150, 150, 0.068); /* Sombra para el efecto de profundidad */
+    transform: translateX(100%); /* Ocultar el sidebar por defecto */
+    transition: transform 0.3s ease; /* Animación de deslizamiento */
+    z-index: 1000; /* Asegúrate de que el sidebar esté por encima de otros elementos */
+    border-radius:  0 0 0 300px;
+  }
+  
+  .cart-sidebar.open {
+    transform: translateX(0); /* Mostrar el sidebar cuando está abierto */
+  }
+  
+  /* Estilo para la "X" de cerrar */
+  .close-btn {
+    background: none; /* Sin fondo */
+    color: #000; /* Color de la "X" */
+    border: none; /* Sin borde */
+    font-size: 24px; /* Tamaño de la "X" */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    position: absolute; /* Posición absoluta para colocar la "X" en la esquina */
+    top: 15px; /* Ajusta la posición vertical */
+    right: 15px; /* Ajusta la posición horizontal */
+  }
+  
+  /* Estilo del botón de comprar */
+  .cart-sidebar button {
+    background-color: #ececec; /* Color de fondo del botón */
+    color: #272727; /* Color del texto blanco */
+    border: #FFFFFF; /* Sin borde */
+    padding: 20px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    width: 80%; /* Botón ocupa todo el ancho del sidebar */
+    margin-top: auto; /* Mueve el botón al fondo del sidebar */
+    transition: all 0.3s; /* Transición suave para el hover */
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    font-weight: 600; /* Negrita */
+    
+    margin-left: 40px;
+  }
+  
+  .cart-sidebar button:hover {
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); /* Sombra sutil al pasar el mouse */
+    background-color: #5B54FF; /* Color de fondo más oscuro al pasar el mouse */
+    color: #FFFFFF;
+  }
+  
+  /* Estilo para el contenido del carrito */
+  .cart-sidebar p {
+    font-size: 20px; /* Tamaño de fuente grande */
+    text-align: center; /* Centrar el texto */
+    margin-top: 60px; /* Espaciado superior */
+    color: rgba(0, 0, 0, 0.5); /* Color gris claro como marca de agua */
+    font-family: 'Inter', sans-serif; /* Fuente Inter */
+    font-weight: normal; /* Peso normal */
+
+  }
+  
+  .cart-sidebar ul {
+    list-style-type: none; /* Sin viñetas */
+    padding: 0; /* Sin espaciado */
+    margin: 0; /* Sin márgenes */
+  }
+  
+  .cart-sidebar li {
+    padding: 10px; /* Espaciado interno para cada elemento de la lista */
+    border-bottom: 1px solid #e0e0e0; /* Línea divisoria entre elementos */
+  }
+  
+
+    
+}

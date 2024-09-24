@@ -9,7 +9,9 @@ export const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuBtnActive, setIsMobileMenuBtnActive] = useState(false);
+
   const location = useLocation();
 
   const handleLogout = () => {
@@ -33,8 +35,44 @@ export const Navbar = () => {
   const handleCheckout = () => {
     if (!isLoggedIn) {
       // Redirigir a registro si no está logueado
+      // Cambiar a la lógica de redirección si es necesario
     } else {
       // Redirigir a la página de checkout
+      window.location.href = '/checkout';
+    }
+  };
+
+  const handleUserIconClick = () => {
+    if (isLoggedIn) {
+      // Mostrar opciones de usuario en lugar de redirigir
+      // Podrías alternar un estado para mostrar el menú desplegable de usuario aquí
+    } else {
+      window.location.href = '/iniciarsesion';
+    }
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuBtnActive(!isMobileMenuBtnActive);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsMobileMenuBtnActive(false);
+  };
+
+  const getActiveMenuText = () => {
+    switch (location.pathname) {
+      case '/':
+        return 'Inicio';
+      case '/paquetes':
+        return 'Paquetes';
+      case '/comotrabajamos':
+        return 'Cómo Trabajamos';
+      case '/servicios':
+        return 'Servicios';
+      default:
+        return 'Menú';
     }
   };
 
@@ -45,7 +83,7 @@ export const Navbar = () => {
           <div className="logo">
             <img src={logoImage} alt="Logo Meraki" />
           </div>
-          <div className="brand">Meraki</div> {/* Texto sin subrayado */}
+          <div className="brand">Meraki</div>
         </Link>
 
         <div className="menu">
@@ -64,6 +102,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
+
         <div className="navbar-buttons">
           {isLoggedIn ? (
             <>
@@ -92,9 +131,46 @@ export const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Navbar */}
+      <div className="mobile-navbar">
+        <div className="mobile-logo">
+          <img src={logoImage} alt="Logo Meraki" />
+        </div>
+        <button
+          className={`mobile-menu-btn ${isMobileMenuOpen ? 'menu-open' : ''} ${isMobileMenuBtnActive ? 'active' : ''}`}
+          onClick={toggleMobileMenu}
+        >
+          {getActiveMenuText()}
+        </button>
+        <div className="mobile-icons">
+          <FaShoppingCart onClick={handleCartClick} />
+          <FaUserCircle onClick={handleUserIconClick} />
+        </div>
+      </div>
+
+      {/* Dropdown Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-dropdown">
+          <ul>
+            <li className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}>
+              <Link to="/" onClick={closeMobileMenu}>Inicio</Link>
+            </li>
+            <li className={`mobile-menu-item ${location.pathname === '/paquetes' ? 'active' : ''}`}>
+              <Link to="/paquetes" onClick={closeMobileMenu}>Paquetes</Link>
+            </li>
+            <li className={`mobile-menu-item ${location.pathname === '/comotrabajamos' ? 'active' : ''}`}>
+              <Link to="/comotrabajamos" onClick={closeMobileMenu}>Cómo Trabajamos</Link>
+            </li>
+            <li className={`mobile-menu-item ${location.pathname === '/servicios' ? 'active' : ''}`}>
+              <Link to="/servicios" onClick={closeMobileMenu}>Servicios</Link>
+            </li>
+          </ul>
+        </div>
+      )}
+
       {/* Sidebar del carrito */}
       <div className={`cart-sidebar ${isSidebarOpen ? 'open' : ''}`}>
-        <button className="close-btn" onClick={handleCartClick}>Cerrar</button>
+        <div className="close-btn" onClick={handleCartClick}>&times;</div> {/* Cruz para cerrar */}
         {cartItems.length === 0 ? (
           <p>Carrito de compras vacío.</p>
         ) : (
