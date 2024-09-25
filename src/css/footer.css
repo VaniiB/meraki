@@ -1,0 +1,143 @@
+/* Estilos para desktop */
+.footer {
+    padding: 40px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 30px;
+    text-align: center;
+    width: 1200px;
+    height: auto;
+    border: 1px solid #888; /* Asegúrate de que el borde no se pierda */
+}
+
+.footer-content {
+    margin-bottom: 50px;
+}
+
+.footer-title {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-text {
+    font-size: 15px;
+    color: #888;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 30px;
+}
+
+.footer-nav {
+    margin-bottom: 30px;
+}
+
+.footer-link {
+    margin: 0 20px;
+    color: #888;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-icons {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.footer-icon {
+    margin: 0 20px;
+    font-size: 24px;
+    color: #888;
+}
+
+.footer-credits {
+    font-size: 14px;
+    color: #888;
+    margin-top: 30px;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-credit-link {
+    color: #888;
+    text-decoration: none;
+}
+
+.footer-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo {
+    width: 80px;
+    height: auto;
+    margin-left: 10px;
+}
+
+/* Estilos para mobile */
+@media (max-width: 768px) {
+    .footer {
+        padding: 10px 0 0 0;
+        margin: 20px auto;
+        background-color: #ffffff;
+        border-radius: 20px;
+        text-align: center;
+        width: 100%;
+        border: none;
+    }
+
+    .footer-title {
+        display: block; /* Apila el logo y el texto uno debajo del otro */
+        text-align: center; /* Centra el contenido en mobile */
+        font-size: 24px;
+    }
+
+    .footer-logo {
+        margin: 0 auto 10px; /* Centra el logo y añade espacio debajo */
+        display: block; /* Asegura que el logo se comporte como bloque y se centre */
+    }
+
+    .footer-text {
+        font-size: 16px;
+        color: #888;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        margin: 20px auto;
+        padding: 20px;
+        display: block;
+        width: 250px;
+    }
+
+    .footer-nav {
+        display: none; /* Oculta la navegación en mobile */
+    }
+
+       /* Ajusta los iconos en mobile */
+       .footer-icons {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center; /* Centra los iconos */
+      }
+    
+      .footer-icon {
+        margin: 0 10px; /* Espacio entre los iconos */
+        font-size: 20px;
+        color: #888;
+      }
+
+    .footer-credits {
+        display: none;
+       
+    }
+
+    .footer-credits a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .footer-credits a:hover {
+        color: #555;
+    }
+}

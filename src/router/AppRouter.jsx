@@ -2,6 +2,7 @@
 import { BrowserRouter,Route, Routes } from "react-router-dom";
 import { Inicio } from "../pages/inicio";
 import { Navbar } from "../componentes/Navbar";
+import Footer from "../componentes/Footer";
 
 
 
@@ -15,7 +16,7 @@ export const AppRouter = () => {
 
       </Routes>
       
-
+<Footer/>
     </BrowserRouter>
   );
 
